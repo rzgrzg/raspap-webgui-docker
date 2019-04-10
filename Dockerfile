@@ -1,5 +1,6 @@
 FROM resin/rpi-raspbian
-RUN apt-get update && apt-get install wget bash -y 
-RUN wget -q https://git.io/voEUQ -O /tmp/raspap 
+ENV UPDATE_URL https://raw.githubusercontent.com/billz/raspap-webgui/master/
+RUN apt-get update && apt-get install wget lighttpd $php_package git hostapd dnsmasq vnstat -y 
+RUN wget -q ${UPDATE_URL}/installers/common.sh -O /tmp/raspapcommon.sh
 EXPOSE 80 53
-CMD ["bash /tmp/raspap"]
+CMD ["bash /tmp/raspapcommon.sh"]
