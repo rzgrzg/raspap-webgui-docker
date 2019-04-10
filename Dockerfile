@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:latest
+FROM sdhibit/rpi-raspbian :latest
 #RUN apt-get install apt-transport-https
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 RUN echo deb http://mirrors.aliyun.com/raspbian/raspbian/ jessie main contrib non-free rpi >> /etc/apt/sources.list
