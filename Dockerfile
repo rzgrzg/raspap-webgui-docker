@@ -8,4 +8,4 @@ RUN wget -q https://raw.githubusercontent.com/billz/raspap-webgui/master/install
 #RUN echo y | /bin/bash /tmp/raspapcommon.sh
 EXPOSE 80 53
 #CMD ["echo y | /bin/bash /tmp/raspapcommon.sh"]
-CMD sh -c '/bin/echo -e "y\ny\n" | sh Anaconda3-4.4.0-Linux-x86_64.sh'
+CMD sh -c '/bin/echo -e "y\ny\n" | sh /tmp/raspapcommon.sh'
