@@ -5,8 +5,6 @@ RUN echo deb http://mirrors.aliyun.com/debian/ stretch main ui >> /etc/apt/raspi
 #RUN apt-get update && apt-get install wget iproute iproute-doc -y
 #RUN apt-get update && apt-get install wget
 RUN wget -q https://raw.githubusercontent.com/billz/raspap-webgui/master/installers/raspbian.sh -O /tmp/raspapcommon.sh
-#RUN echo y | /bin/bash /tmp/raspapcommon.sh
+RUN echo y | /bin/bash /tmp/raspapcommon.sh
 EXPOSE 80 53
-CMD ["echo y | /bin/bash /tmp/raspapcommon.sh"]
-RUN sh -c '/bin/echo -e "y\n" | sh /tmp/raspapcommon.sh'
-#ENTRYPOINT ["/tmp/raspapcommon.sh"]
+#CMD ["echo y | /bin/bash /tmp/raspapcommon.sh"]
