@@ -1,4 +1,4 @@
-FROM tobi312/rpi-php
+FROM balenalib/rpi-raspbian
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 RUN echo deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi >> /etc/apt/sources.list
 RUN echo deb http://mirrors.aliyun.com/debian/ stretch main ui >> /etc/apt/raspi.list
@@ -8,3 +8,5 @@ RUN wget -q https://raw.githubusercontent.com/billz/raspap-webgui/master/install
 #RUN echo y | /bin/bash /tmp/raspapcommon.sh
 EXPOSE 80 53
 CMD ["echo y | /bin/bash /tmp/raspapcommon.sh"]
+RUN sh -c '/bin/echo -e "y\n" | sh /tmp/raspapcommon.sh'
+#ENTRYPOINT ["/tmp/raspapcommon.sh"]
