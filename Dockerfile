@@ -1,4 +1,4 @@
-FROM sdhibit/rpi-raspbian
+FROM tobi312/rpi-php
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 RUN echo deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi >> /etc/apt/sources.list
 RUN echo deb http://mirrors.aliyun.com/debian/ stretch main ui >> /etc/apt/raspi.list
