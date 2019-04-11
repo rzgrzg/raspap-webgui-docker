@@ -6,30 +6,30 @@ RUN apt-get update && apt-get install git lighttpd php7.0-cgi hostapd dnsmasq vn
 RUN lighttpd-enable-mod fastcgi-php && service lighttpd restart
 
 RUN { \
-echo www-data ALL=(ALL) NOPASSWD:/sbin/ifdown\
-echo www-data ALL=(ALL) NOPASSWD:/sbin/ifup\
-echo www-data ALL=(ALL) NOPASSWD:/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf\
-echo www-data ALL=(ALL) NOPASSWD:/bin/cat /etc/wpa_supplicant/wpa_supplicant-wlan[0-9].conf\
-echo www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/wifidata /etc/wpa_supplicant/wpa_supplicant.conf\
-echo www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/wifidata /etc/wpa_supplicant/wpa_supplicant-wlan[0-9].conf\
-echo www-data ALL=(ALL) NOPASSWD:/sbin/wpa_cli -i wlan[0-9] scan_results\
-echo www-data ALL=(ALL) NOPASSWD:/sbin/wpa_cli -i wlan[0-9] scan\
-echo www-data ALL=(ALL) NOPASSWD:/sbin/wpa_cli -i wlan[0-9] reconfigure\
-echo www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/hostapddata /etc/hostapd/hostapd.conf\
-echo www-data ALL=(ALL) NOPASSWD:/etc/init.d/hostapd start\
-echo www-data ALL=(ALL) NOPASSWD:/etc/init.d/hostapd stop\
-echo www-data ALL=(ALL) NOPASSWD:/etc/init.d/dnsmasq start\
-echo www-data ALL=(ALL) NOPASSWD:/etc/init.d/dnsmasq stop\
-echo www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/dhcpddata /etc/dnsmasq.conf\
-echo www-data ALL=(ALL) NOPASSWD:/sbin/shutdown -h now\
-echo www-data ALL=(ALL) NOPASSWD:/sbin/reboot\
-echo www-data ALL=(ALL) NOPASSWD:/sbin/ip link set wlan[0-9] down\
-echo www-data ALL=(ALL) NOPASSWD:/sbin/ip link set wlan[0-9] up\
-echo www-data ALL=(ALL) NOPASSWD:/sbin/ip -s a f label wlan[0-9]\
-echo www-data ALL=(ALL) NOPASSWD:/bin/cp /etc/raspap/networking/dhcpcd.conf /etc/dhcpcd.conf\
-echo www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/enablelog.sh\
-echo www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/disablelog.sh\
-echo www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/servicestart.sh\
+echo "www-data ALL=(ALL) NOPASSWD:/sbin/ifdown"\
+echo "www-data ALL=(ALL) NOPASSWD:/sbin/ifup"\
+echo "www-data ALL=(ALL) NOPASSWD:/bin/cat /etc/wpa_supplicant/wpa_supplicant.conf"\
+echo "www-data ALL=(ALL) NOPASSWD:/bin/cat /etc/wpa_supplicant/wpa_supplicant-wlan[0-9].conf"\
+echo "www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/wifidata /etc/wpa_supplicant/wpa_supplicant.conf"\
+echo "www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/wifidata /etc/wpa_supplicant/wpa_supplicant-wlan[0-9].conf"\
+echo "www-data ALL=(ALL) NOPASSWD:/sbin/wpa_cli -i wlan[0-9] scan_results"\
+echo "www-data ALL=(ALL) NOPASSWD:/sbin/wpa_cli -i wlan[0-9] scan"\
+echo "www-data ALL=(ALL) NOPASSWD:/sbin/wpa_cli -i wlan[0-9] reconfigure"\
+echo "www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/hostapddata /etc/hostapd/hostapd.conf"\
+echo "www-data ALL=(ALL) NOPASSWD:/etc/init.d/hostapd start"\
+echo "www-data ALL=(ALL) NOPASSWD:/etc/init.d/hostapd stop"\
+echo "www-data ALL=(ALL) NOPASSWD:/etc/init.d/dnsmasq start"\
+echo "www-data ALL=(ALL) NOPASSWD:/etc/init.d/dnsmasq stop"\
+echo "www-data ALL=(ALL) NOPASSWD:/bin/cp /tmp/dhcpddata /etc/dnsmasq.conf"\
+echo "www-data ALL=(ALL) NOPASSWD:/sbin/shutdown -h now"\
+echo "www-data ALL=(ALL) NOPASSWD:/sbin/reboot"\
+echo "www-data ALL=(ALL) NOPASSWD:/sbin/ip link set wlan[0-9] down"\
+echo "www-data ALL=(ALL) NOPASSWD:/sbin/ip link set wlan[0-9] up"\
+echo "www-data ALL=(ALL) NOPASSWD:/sbin/ip -s a f label wlan[0-9]"\
+echo "www-data ALL=(ALL) NOPASSWD:/bin/cp /etc/raspap/networking/dhcpcd.conf /etc/dhcpcd.conf"\
+echo "www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/enablelog.sh"\
+echo "www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/disablelog.sh"\
+echo "www-data ALL=(ALL) NOPASSWD:/etc/raspap/hostapd/servicestart.sh"\
 } | tee -a /etc/sudoers 
 
 RUN rm -rf /var/www/html && git clone https://github.com/billz/raspap-webgui /var/www/html
