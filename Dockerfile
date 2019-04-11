@@ -2,7 +2,7 @@ FROM raspbian/stretch:latest
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
 RUN echo deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib non-free rpi >> /etc/apt/sources.list
 RUN echo deb http://mirrors.aliyun.com/debian/ stretch main ui >> /etc/apt/raspi.list
-RUN apt-get update && apt-get install git lighttpd php7.0-cgi hostapd dnsmasq vnstat
+RUN apt-get update && apt-get install git lighttpd php7.0-cgi hostapd dnsmasq vnstat -y
 RUN lighttpd-enable-mod fastcgi-php && service lighttpd restart
 RUN rm -rf /var/www/html && git clone https://github.com/billz/raspap-webgui /var/www/html
 RUN chown -R www-data:www-data /var/www/html
