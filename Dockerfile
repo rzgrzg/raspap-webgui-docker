@@ -4,4 +4,4 @@ RUN echo deb http://mirrors.aliyun.com/raspbian/raspbian/ stretch main contrib n
 RUN echo deb http://mirrors.aliyun.com/debian/ stretch main ui >> /etc/apt/raspi.list
 RUN wget -q https://raw.githubusercontent.com/billz/raspap-webgui/master/installers/raspbian.sh -O /tmp/raspapcommon.sh
 EXPOSE 80 53
-CMD sh -c '/bin/echo -e "y\ny\n" | /bin/bash /tmp/raspapcommon.sh && /bin/bash'
+CMD sh -c '/bin/echo -e "y\ny\n" | /bin/bash /tmp/raspapcommon.sh'
